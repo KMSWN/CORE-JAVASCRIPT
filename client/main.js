@@ -1,6 +1,6 @@
 
 
-import { diceAnimation, getNode } from "./lib/index.js";
+import { diceAnimation, getNode, getNodes } from "./lib/index.js";
 
 
 // [ 주사위 굴리기 ]
@@ -11,11 +11,19 @@ import { diceAnimation, getNode } from "./lib/index.js";
 
 // diceAnimation()
 
+// [ 레코드 리스트 보이기 ]
+// 1. handleRecord 함수를 만들기
+// 2. disable 활성 유틸 함수 만들기
+// 3. handleReset 함수를 만듭니다.
+// 4. visible 활성 유틸 함수 만들기
+// 5. toggleState 유틸 함수 만들기 
 
-const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
 
+const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
 
-
+// const rollingDicebutton = getNode('.buttonGroup > button:nth-child(1)')
+// const recordButton = getNode('.buttonGroup > button:nth-child(2)')
+// const resetButton = getNode('.buttonGroup > button:nth-child(3)')
 
 // IIFE
 
@@ -30,6 +38,7 @@ const handlerRollingDice = (() => {
             stopAnimation = setInterval(diceAnimation, 100)
         }else{
             clearInterval(stopAnimation)
+            recordButton.disabled = false;
         }
 
         isRolling = !isRolling;
