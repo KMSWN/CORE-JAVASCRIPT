@@ -16,13 +16,25 @@ const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
 
 
 
-let stopAnimation;
 
-const handlerRollingDice = () => {
+// IIFE
 
-  stopAnimation = setInterval(diceAnimation,100)
+const handlerRollingDice = (() => {
 
-}
+    let stopAnimation;
+    let isRolling = false;  
+
+//   stopAnimation = setInterval(diceAnimation,100)
+    return () => {
+        if(!isRolling){
+            stopAnimation = setInterval(diceAnimation, 100)
+        }else{
+            clearInterval(stopAnimation)
+        }
+
+        isRolling = !isRolling;
+    }
+})()
 
 
 
