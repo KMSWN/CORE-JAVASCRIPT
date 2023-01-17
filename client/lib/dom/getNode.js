@@ -1,6 +1,7 @@
+import { isString } from "../utils/index.js";
 
 export function getNode(node){
-  if(typeof node !== 'string'){
+  if(!isString(node)){
     throw new Error('getNode 함수의 인자는 문자 타입 이여야 합니다.');
   }
 
@@ -11,7 +12,7 @@ export function getNode(node){
 
 
 export function getNodes(node){
-  if(typeof node !== 'string'){
+  if(!isString(node)){
     throw new Error('getNode 함수의 인자는 문자 타입 이여야 합니다.');
   }
   
