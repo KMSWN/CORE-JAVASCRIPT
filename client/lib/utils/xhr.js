@@ -154,7 +154,7 @@ const defaultOptions = {
   body : null
 }
 
-function xhrPromise(options = {}){
+export function xhrPromise(options = {}){
  
   const xhr = new XMLHttpRequest();
 
@@ -199,6 +199,40 @@ function xhrPromise(options = {}){
 ) */
 
 
+xhrPromise.get = (url) => {
+
+  return xhrPromise({
+    url
+  })
+}
+
+xhrPromise.post = (url, body) => {
+
+  return xhrPromise({
+    url,
+    body,
+    method: 'POST'
+  })
+}
+
+xhrPromise.put = (url, body) => {
+
+  return xhrPromise({
+    url,
+    body,
+    method: 'PUT'
+  })
+}
+
+xhrPromise.delete = (url) => {
+
+  return xhrPromise({
+    url,
+    method: 'DELETE'
+  })
+}
+
+/* 
 xhrPromise({
   url: 'https://jsonplaceholder.typicode.com/users/1'
 })
@@ -208,3 +242,4 @@ xhrPromise({
 .catch((err) => {
   console.log(err)
 })
+ */

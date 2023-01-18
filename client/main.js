@@ -6,9 +6,16 @@
 
 //post 생성, get 가져오기, put 업데이트, delete 삭제
 
-import { insertLast, xhrData } from "./lib/index.js"
+import { insertLast, xhrData, xhrPromise } from "./lib/index.js"
 
-
+xhrPromise
+.get('https://jsonplaceholder.typicode.com/users/1')
+.then((res) => {
+  insertLast(document.body, JSON.stringify(res));
+})
+.catch((err) => {
+  console.log(err);
+})
 
 /* 
 
